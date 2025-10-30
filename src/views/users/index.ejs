@@ -1,0 +1,34 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/nav') %>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>Usuários</h1>
+  <a class="btn btn-primary" href="/users/new">Novo</a>
+</div>
+<form class="mb-3" method="get">
+  <div class="input-group">
+    <input class="form-control" placeholder="Buscar" name="q" value="<%= q %>">
+    <button class="btn btn-outline-secondary">Buscar</button>
+  </div>
+</form>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Papel</th><th></th></tr></thead>
+  <tbody>
+    <% users.forEach(u => { %>
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.name %></td>
+        <td><%= u.email %></td>
+        <td><span class="badge bg-<%= u.role==='ADMIN' ? 'danger' : 'secondary' %>"><%= u.role %></span></td>
+        <td class="text-end">
+          <a class="btn btn-sm btn-outline-primary" href="/users/<%= u.id %>/edit">Editar</a>
+          <form method="post" action="/users/<%= u.id %>/delete" class="d-inline">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Excluir?')">Excluir</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+</div>
+</body></html>

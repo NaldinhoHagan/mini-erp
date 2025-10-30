@@ -1,0 +1,17 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/nav') %>
+<h1>Editar Usuário</h1>
+<form method="post" action="/users/<%= user.id %>/edit" class="mb-4">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <div class="mb-3"><label class="form-label">Nome</label><input name="name" class="form-control" value="<%= user.name %>" required></div>
+  <div class="mb-3"><label class="form-label">E-mail</label><input name="email" type="email" class="form-control" value="<%= user.email %>" required></div>
+  <div class="mb-3"><label class="form-label">Papel</label>
+    <select name="role" class="form-select">
+      <option value="USER" <%= user.role==='USER' ? 'selected' : '' %>>USER</option>
+      <option value="ADMIN" <%= user.role==='ADMIN' ? 'selected' : '' %>>ADMIN</option>
+    </select>
+  </div>
+  <button class="btn btn-primary">Salvar</button>
+</form>
+</div>
+</body></html>

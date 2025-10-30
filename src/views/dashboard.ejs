@@ -1,0 +1,16 @@
+<%- include('partials/head', { title }) %>
+<%- include('partials/nav') %>
+<h1 class="mb-4">Dashboard</h1>
+<p>Bem-vindo, <strong><%= user?.name %></strong>!</p>
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <h5 class="card-title">Atalhos</h5>
+      <a class="btn btn-sm btn-outline-primary me-2" href="/clients/new">Novo Cliente</a>
+      <a class="btn btn-sm btn-outline-primary me-2" href="/products/new">Novo Produto</a>
+      <a class="btn btn-sm btn-outline-secondary" href="/users">Gerenciar Usuários</a>
+    </div></div>
+  </div>
+</div>
+</div>
+</body></html>

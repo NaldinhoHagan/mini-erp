@@ -1,0 +1,15 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/nav') %>
+<h1>Novo Usuário</h1>
+<form method="post" action="/users/new" class="mb-4">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <div class="mb-3"><label class="form-label">Nome</label><input name="name" class="form-control" required></div>
+  <div class="mb-3"><label class="form-label">E-mail</label><input name="email" type="email" class="form-control" required></div>
+  <div class="mb-3"><label class="form-label">Senha</label><input name="password" type="password" class="form-control" required></div>
+  <div class="mb-3"><label class="form-label">Papel</label>
+    <select name="role" class="form-select"><option value="USER">USER</option><option value="ADMIN">ADMIN</option></select>
+  </div>
+  <button class="btn btn-primary">Salvar</button>
+</form>
+</div>
+</body></html>

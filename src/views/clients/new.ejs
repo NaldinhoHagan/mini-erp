@@ -1,0 +1,12 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/nav') %>
+<h1>Novo Cliente</h1>
+<form method="post" action="/clients/new" class="mb-4">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <div class="mb-3"><label class="form-label">Nome</label><input name="name" class="form-control" required></div>
+  <div class="mb-3"><label class="form-label">E-mail</label><input name="email" type="email" class="form-control"></div>
+  <div class="mb-3"><label class="form-label">Telefone</label><input name="phone" class="form-control"></div>
+  <button class="btn btn-primary">Salvar</button>
+</form>
+</div>
+</body></html>

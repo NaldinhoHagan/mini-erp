@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { ensureAdmin, ensureAuth } from "../lib/auth.js";
+import { listUsers, getNewUser, postNewUser, getEditUser, postEditUser, postDeleteUser } from "../controllers/users.controller.js";
+const router = Router();
+router.use(ensureAuth, ensureAdmin);
+router.get("/users", listUsers);
+router.get("/users/new", getNewUser);
+router.post("/users/new", postNewUser);
+router.get("/users/:id/edit", getEditUser);
+router.post("/users/:id/edit", postEditUser);
+router.post("/users/:id/delete", postDeleteUser);
+export default router;
