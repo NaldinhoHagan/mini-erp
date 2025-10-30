@@ -10,5 +10,6 @@ services:
         sync: false
       - key: SESSION_SECRET
         sync: false
-    postDeployCommand: |
-      npx prisma migrate deploy && node dist/prisma/seed.js
+    postBuildCommand: |
+      npx prisma migrate deploy
+      node dist/prisma/seed.js
