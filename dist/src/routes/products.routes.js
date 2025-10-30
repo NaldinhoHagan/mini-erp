@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { ensureAuth } from "../lib/auth.js";
+import { listProducts, getNewProduct, postNewProduct, getEditProduct, postEditProduct, postDeleteProduct } from "../controllers/products.controller.js";
+const router = Router();
+router.use(ensureAuth);
+router.get("/products", listProducts);
+router.get("/products/new", getNewProduct);
+router.post("/products/new", postNewProduct);
+router.get("/products/:id/edit", getEditProduct);
+router.post("/products/:id/edit", postEditProduct);
+router.post("/products/:id/delete", postDeleteProduct);
+export default router;

@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { ensureAuth } from "../lib/auth.js";
+import { listClients, getNewClient, postNewClient, getEditClient, postEditClient, postDeleteClient } from "../controllers/clients.controller.js";
+const router = Router();
+router.use(ensureAuth);
+router.get("/clients", listClients);
+router.get("/clients/new", getNewClient);
+router.post("/clients/new", postNewClient);
+router.get("/clients/:id/edit", getEditClient);
+router.post("/clients/:id/edit", postEditClient);
+router.post("/clients/:id/delete", postDeleteClient);
+export default router;

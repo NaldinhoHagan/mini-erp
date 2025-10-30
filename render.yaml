@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: mini-erp
+    env: node
+    plan: free
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: node dist/src/server.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+    postDeployCommand: |
+      npx prisma migrate deploy && node dist/prisma/seed.js
