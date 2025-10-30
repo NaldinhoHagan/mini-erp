@@ -4,12 +4,10 @@ services:
     env: node
     plan: free
     buildCommand: npm install && npx prisma generate && npm run build
-    startCommand: node dist/src/server.js
+    # 👇 encadeia migrate + seed + start
+    startCommand: bash -c "npx prisma migrate deploy && node dist/prisma/seed.js && node dist/src/server.js"
     envVars:
       - key: DATABASE_URL
         sync: false
       - key: SESSION_SECRET
         sync: false
-    postBuildCommand: |
-      npx prisma migrate deploy
-      node dist/prisma/seed.js
