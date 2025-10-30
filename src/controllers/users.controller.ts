@@ -1,5 +1,5 @@
 import { prisma } from "../lib/prisma.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 
 export async function listUsers(req: Request, res: Response) {
@@ -24,7 +24,7 @@ export async function getNewUser(req: Request, res: Response) {
 
 export async function postNewUser(req: Request, res: Response) {
   const { name, email, password, role } = req.body;
-  const passwordHash = await bcrypt.hash(password, 10);
+  const passwordHash = bcrypt.hashSync(password, 10);
   await prisma.user.create({ data: { name, email, password: passwordHash, role } });
   res.redirect("/users");
 }
